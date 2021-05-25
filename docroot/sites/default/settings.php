@@ -313,7 +313,7 @@ $settings['hash_salt'] = '';
  * After finishing the upgrade, be sure to open this file again and change the
  * TRUE back to a FALSE!
  */
-$settings['update_free_access'] = FALSE;
+$settings['update_free_access'] = false;
 
 /**
  * External access proxy settings:
@@ -403,7 +403,6 @@ $settings['update_free_access'] = FALSE;
  */
 # $settings['reverse_proxy_trusted_headers'] = \Symfony\Component\HttpFoundation\Request::HEADER_X_FORWARDED_ALL | \Symfony\Component\HttpFoundation\Request::HEADER_FORWARDED;
 
-
 /**
  * Page caching:
  *
@@ -421,7 +420,6 @@ $settings['update_free_access'] = FALSE;
  * getting cached pages from the proxy.
  */
 # $settings['omit_vary_cookie'] = TRUE;
-
 
 /**
  * Cache TTL for client error (4xx) responses.
@@ -468,14 +466,14 @@ $settings['update_free_access'] = FALSE;
  */
 /*
 if ($settings['hash_salt']) {
-  $prefix = 'drupal.' . hash('sha256', 'drupal.' . $settings['hash_salt']);
-  $apc_loader = new \Symfony\Component\ClassLoader\ApcClassLoader($prefix, $class_loader);
-  unset($prefix);
-  $class_loader->unregister();
-  $apc_loader->register();
-  $class_loader = $apc_loader;
+$prefix = 'drupal.' . hash('sha256', 'drupal.' . $settings['hash_salt']);
+$apc_loader = new \Symfony\Component\ClassLoader\ApcClassLoader($prefix, $class_loader);
+unset($prefix);
+$class_loader->unregister();
+$apc_loader->register();
+$class_loader = $apc_loader;
 }
-*/
+ */
 
 /**
  * Authorized file system operations:
@@ -763,7 +761,7 @@ $settings['entity_update_batch_size'] = 50;
  * well as the original entity type and field storage definitions should be
  * retained after a successful entity update process.
  */
-$settings['entity_update_backup'] = TRUE;
+$settings['entity_update_backup'] = true;
 
 /**
  * Node migration type.
@@ -776,7 +774,7 @@ $settings['entity_update_backup'] = TRUE;
  * complete node migrations. Set this to TRUE to force the use of the classic
  * node migrations.
  */
-$settings['migrate_node_migrate_type_classic'] = FALSE;
+$settings['migrate_node_migrate_type_classic'] = false;
 
 /**
  * Load local development override configuration, if available.
@@ -804,3 +802,7 @@ require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
  *
  * @link https://docs.acquia.com/blt/
  */
+
+if (file_exists('/var/www/site-php')) {
+  require '/var/www/site-php/varbasedemo/varbasedemo-settings.inc';
+}
